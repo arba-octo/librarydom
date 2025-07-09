@@ -1,0 +1,72 @@
+// Указывает, какой генератор использовать для создания Prisma Client или других утилит
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Задает параметры подключения к базе данных
+datasource db {
+  provider = "postgresql" // или mysql, sqlite, sqlserver, mongodb
+  url      = env("DATABASE_URL")
+}
+
+model Book {
+  id     Int     @id @default(autoincrement())
+  title             String
+  author?           String?
+  series            Series?     @relation("SeriesBooks", fields: [seriesId], references: [id])
+  seriesId          Int?
+  type?             String?     @relation("TypeBooks", fields: [typesId], references: [id])
+  typeId?           Int?
+  pages             Int
+  age               Int[]     // Массив возрастов
+  faceImg           String    // Ссылка на изображение
+  tocImg            String[]  // Массив ссылок на изображения
+  exampleImg        String  // Ссылка на изображение
+  statusFree        Boolean
+  occupiedTo        DateTime?   // null — значит может быть пустым
+  owner             Users       @relation("OwnerBooks", fields: [ownerId], references: [id])
+  ownerId           Int
+  user              Users?      @relation("UserBooks", fields: [userId], references: [id])
+  userId            Int?
+  firstSelfReading  Boolean
+  comments          Comments[] // Так как это массив fields и references не нужен
+  checked           Boolean
+}
+
+model Series {
+    id              Int        @id @default(autoincrement())
+    key             String     @unique
+    name            String
+    booksSeries     Book[]     @relation("SeriesBooks")
+}
+
+model Users {
+    id              Int     @id @default(autoincrement())
+    name            String
+    phone           String
+    password        String
+    whatsUp         Boolean
+    telegram        Boolean
+    email           String
+    regData DateTime @default(now()) // автоматически устанавливается текущее время при создании
+    rating          Int
+    ownedBooks      Book[]      @relation("OwnerBooks")
+    useredBooks     Book[]      @relation("UserBooks")
+    comments        Comments[]
+}
+
+model Types {
+    id              Int         @id @default(autoincrement())
+    name            String
+    booksType       Book[]      @relation("TypeBooks")
+}
+
+model Comments {
+    id              Int         @id @default(autoincrement())
+    user            Users       @relation(fields: [userId], references: [id])
+    userId          Int
+    book            Book        @relation(fields: [bookId], references: [id])
+    bookId          Int
+    text            String
+    data            DateTime    @default(now())
+}
