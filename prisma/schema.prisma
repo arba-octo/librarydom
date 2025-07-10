@@ -9,14 +9,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Book {
-  id     Int     @id @default(autoincrement())
+model Books {
+  id                Int         @id @default(autoincrement())
   title             String
-  author?           String?
+  author            String?
   series            Series?     @relation("SeriesBooks", fields: [seriesId], references: [id])
   seriesId          Int?
-  type?             String?     @relation("TypeBooks", fields: [typesId], references: [id])
-  typeId?           Int?
+  type              Types?      @relation("TypeBooks", fields: [typeId], references: [id])
+  typeId            Int?
   pages             Int
   age               Int[]     // Массив возрастов
   faceImg           String    // Ссылка на изображение
@@ -37,7 +37,7 @@ model Series {
     id              Int        @id @default(autoincrement())
     key             String     @unique
     name            String
-    booksSeries     Book[]     @relation("SeriesBooks")
+    booksSeries     Books[]    @relation("SeriesBooks")
 }
 
 model Users {
@@ -50,22 +50,22 @@ model Users {
     email           String
     regData DateTime @default(now()) // автоматически устанавливается текущее время при создании
     rating          Int
-    ownedBooks      Book[]      @relation("OwnerBooks")
-    useredBooks     Book[]      @relation("UserBooks")
+    ownedBooks      Books[]     @relation("OwnerBooks")
+    useredBooks     Books[]     @relation("UserBooks")
     comments        Comments[]
 }
 
 model Types {
     id              Int         @id @default(autoincrement())
     name            String
-    booksType       Book[]      @relation("TypeBooks")
+    booksType       Books[]     @relation("TypeBooks")
 }
 
 model Comments {
     id              Int         @id @default(autoincrement())
     user            Users       @relation(fields: [userId], references: [id])
     userId          Int
-    book            Book        @relation(fields: [bookId], references: [id])
+    book            Books       @relation(fields: [bookId], references: [id])
     bookId          Int
     text            String
     data            DateTime    @default(now())

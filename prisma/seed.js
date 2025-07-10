@@ -9,8 +9,8 @@ async function main() {
             name: "DanaArb",
             phone: "+79817940081",
             password: "Dana060718",
-            whatsup: true,
-            telegramm: true,
+            whatsUp: true,
+            telegram: true,
             email: "nevarus@yandex.ru",
             rating: 10,
         }
@@ -24,7 +24,7 @@ async function main() {
         }
     });
 
-    const seriesShyak = await prisma.series.create({
+    const seriesShmyak = await prisma.series.create({
         data: {
             key: "cat-shmyak",
             name: "Котёнок Шмяк",
@@ -217,7 +217,7 @@ async function main() {
         data: {
             title: "Котенок Шмяк идёт к доктору",
             author: "Скоттон Р.",
-            seriesId: seriesShyak.id,
+            seriesId: seriesShmyak.id,
             typeId: null,
             pages: 32,
             age: [1, 7],
@@ -236,7 +236,7 @@ async function main() {
         data: {
             title: "Спокойной ночи, Шмяк!",
             author: "Скоттон Р.",
-            seriesId: seriesShyak.id,
+            seriesId: seriesShmyak.id,
             typeId: null,
             pages: 31,
             age: [1, 7],
@@ -255,7 +255,7 @@ async function main() {
         data: {
             title: "Котенок Шмяк и морские истории",
             author: "Скоттон Р.",
-            seriesId: seriesShyak.id,
+            seriesId: seriesShmyak.id,
             typeId: null,
             pages: 31,
             age: [1, 7],
@@ -275,7 +275,7 @@ async function main() {
             title: "Новая детская энциклопедия",
             author: null,
             seriesId: null,
-            typeId: typeEncic,
+            typeId: typeEncic.id,
             pages: 320,
             age: [6, 10],
             faceImg: "https://librarydom/new-child-encic_face.jpg",
@@ -294,7 +294,7 @@ async function main() {
             title: "Мои эмоции. 20 терапевтических сказок",
             author: "Хонина И., Смирнова Е.",
             seriesId: null,
-            typeId: typeLearn,
+            typeId: typeLearn.id,
             pages: 63,
             age: [2, 7],
             faceImg: "https://librarydom/my-emotions-20-tales_face.jpg",
@@ -313,7 +313,7 @@ async function main() {
             title: "Детская энциклопедия динозавров",
             author: null,
             seriesId: null,
-            typeId: typeEncic,
+            typeId: typeEncic.id,
             pages: 100,
             age: [4, 10],
             faceImg: "https://librarydom/child-encic-dinosaurs_face.jpg",
@@ -351,6 +351,7 @@ async function main() {
             title: "Мейзи Хитчинс. Тайна мальчика из джунглей",
             author: "Вебб Х.",
             seriesId: seriesMeyzi.id,
+            typeId: null,
             pages: 124,
             age: [7, 12],
             faceImg: "https://librarydom/meizi-secret-boy-from-jungles_face.jpg",
@@ -422,10 +423,10 @@ async function main() {
         }
     });
 
-    // Создаем комментарии
+    // Создаем комментарии - после создания книг, так как на них будет ссылка
     const comments1 = await prisma.comments.create({
         data: {
-            book:   book1.id,
+            bookId: book1.id,
             userId: userDanaArb.id,
             text: "Детективная история-приключение в железном придуманном мире роболтов. Очень захватывает детей и читается на одном дыхании. Много ярких картинок. Первая книга из серии.",
         }
