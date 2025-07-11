@@ -1,5 +1,5 @@
 import {useSelector, useDispatch} from 'react-redux';
-import {styles} from "../../../../dev/library/library-dom/src/data/mui-styles";
+import {styles} from "@/data/mui-styles";
 import {Slider, TextField, Typography, Select, MenuItem, FormControl, InputLabel} from "@mui/material";
 import {
     setFilter,
@@ -8,9 +8,9 @@ import {
     selectAuthor,
     changeValueAction,
     clearAllFiltersAction, selectSeriesId,
-} from '../../../../dev/library/library-dom/src/features/search/search-slice';
-import {selectBooks} from "../../../../dev/library/library-dom/src/features/books-slice";
-import {useValue} from "../../../../dev/library/library-dom/src/features/search/use-value";
+} from '@/features/search/search-slice';
+import {selectBooks} from "@/features/books-slice";
+import {useValue} from "@/features/search/use-value";
 
 function SideBarSearch(props) {
     const dispatch = useDispatch();

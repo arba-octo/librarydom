@@ -1,4 +1,4 @@
-import Filter from "./Filter";
+import Filter from "@/components/Filter";
 import {useDispatch, useSelector} from "react-redux";
 import {
     selectAge,
@@ -7,10 +7,10 @@ import {
     selectAuthor,
     removeFilterAction,
     selectActiveFilters, selectSeriesId,
-} from "../../../dev/library/library-dom/src/features/search/search-slice";
-import {AGE_TO_FILTER, AGE, TITLE, SERIESID, AUTHOR} from "../../../dev/library/library-dom/src/data/constants";
-import {selectBooks} from "../../../dev/library/library-dom/src/features/books-slice";
-import {selectAllSeries} from "../../../dev/library/library-dom/src/features/series-slice";
+} from "@/features/search/search-slice";
+import {AGE_TO_FILTER, AGE, TITLE, SERIESID, AUTHOR} from "@/data/constants";
+import {selectBooks} from "@/features/books-slice";
+import {selectAllSeries} from "@/features/series-slice";
 
 function FiltersPanel() {
     const dispatch = useDispatch();

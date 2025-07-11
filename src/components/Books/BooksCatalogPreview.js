@@ -1,8 +1,8 @@
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import Book from "./Book";
-import {setBooks} from "../../../../dev/library/library-dom/src/features/books-slice";
-import {selectFilteredBooks, setFilteredBooks} from "../../../../dev/library/library-dom/src/features/search/search-slice";
+import Book from "@/components/Books/Book";
+import {setBooks} from "@/features/books-slice";
+import {selectFilteredBooks, setFilteredBooks} from "@/features/search/search-slice";
 
 function BooksCatalogPreview() {
     const dispatch = useDispatch();

@@ -1,10 +1,11 @@
 import {useDispatch, useSelector} from "react-redux";
-import { Link } from 'react-router-dom';
-import {changeValueAction, selectSearch, setSearch} from "../../../../dev/library/library-dom/src/features/search/search-slice";
-import {useValue} from "../../../../dev/library/library-dom/src/features/search/use-value";
-import {selectBooks} from "../../../../dev/library/library-dom/src/features/books-slice";
-import logo from "../../../../dev/library/library-dom/src/images/logo.svg";
-import {selectFavourites} from "../../../../dev/library/library-dom/src/features/favourites/favourites-slice";
+import Link from "next/link";
+import Image from "next/image";
+import {changeValueAction, selectSearch, setSearch} from "@//features/search/search-slice";
+import {useValue} from "@/features/search/use-value";
+import {selectBooks} from "@/features/books-slice";
+import logo from "@/images/logo.svg";
+import {selectFavourites} from "@/features/favourites/favourites-slice";
 
 function Header() {
     const [search, handleChangeSearch] = useValue(selectSearch, changeValueAction);
@@ -14,8 +15,8 @@ function Header() {
 
     return (
         <header className="section header">
-            <Link to="/library-dom">
-                <img className="header__logo" src={logo} alt="БиблиоDом лого"></img>
+            <Link href="/librarydom">
+                <Image className="header__logo" src={logo} alt="БиблиоDом лого" priority></Image>
             </Link>
             <input
                 id="search"
@@ -33,7 +34,7 @@ function Header() {
                 <LinkToOpenModal width={600} name="Войти" content={<AuthForm />} />
                 <LinkToOpenModal width={600} name="Зарегистрироваться" content={<Reg />} />
                 */}
-                <Link to='/favourites' className='favourites'>{`Избранное (${favourites.length})`}</Link>
+                <Link href='/favourites' className='favourites'>{`Избранное (${favourites.length})`}</Link>
             </div>
         </header>
     )

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Box, Modal } from "@mui/material";
-import { closeModal, selectModal } from "../../../../dev/library/library-dom/src/features/modal-slice";
+import { closeModal, selectModal } from "@/features/modal-slice";
 
 function ModalComponent({ width, children }) {
     const style = {

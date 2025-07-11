@@ -1,10 +1,10 @@
 import {useEffect, useState} from "react";
-import searchIcon from "../../../../dev/library/library-dom/src/images/icon_seach.png";
-import addBook from "../../../../dev/library/library-dom/src/images/icon-book.svg";
-import SideBarSearch from "./SideBarSearch";
-import SideBarAddBook from "./SideBarAddBook";
-import LineSeparate from "../LineSeparate";
-import {selectAllSeries, setSeries} from "../../../../dev/library/library-dom/src/features/series-slice";
+import searchIcon from "@/images/icon_seach.png";
+import addBook from "@/images/icon-book.svg";
+import SideBarSearch from "@/components/SideBar/SideBarSearch";
+import SideBarAddBook from "@/components/SideBar/SideBarAddBook";
+import LineSeparate from "@/components/LineSeparate";
+import {selectAllSeries, setSeries} from "@/features/series-slice";
 import {useDispatch, useSelector} from "react-redux";
 
 function SideBar() {

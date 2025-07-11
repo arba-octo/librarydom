@@ -1,6 +1,6 @@
 import {Typography} from "@mui/material";
-import CopyComponent from "../CopyComponent";
-import {Link} from "react-router-dom";
+import CopyComponent from "@/components/CopyComponent";
+import Link from "next/link";
 
 function ModalToTelegramAllBook ({ dataBook }) {
     return (
@@ -16,7 +16,7 @@ function ModalToTelegramAllBook ({ dataBook }) {
                 их данные и вставьте (ctrl + V) в телеграмм-канал
                 {' '}
                 <Link
-                    to="https://t.me/+WA1jwbcj6xlhMzli"
+                    href="https://t.me/+WA1jwbcj6xlhMzli"
                     target="_blank"
                     rel="noopener noreferrer"
                 ><button className="favourite__modal_button-text">БиблиоDom</button></Link>

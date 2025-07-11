@@ -1,5 +1,5 @@
-import BooksCatalogPreview from "./BooksCatalogPreview";
-import FiltersPanel from "../FiltersPanel";
+import BooksCatalogPreview from "@/components/Books/BooksCatalogPreview";
+import FiltersPanel from "@/components/FiltersPanel";
 
 function Books() {
     return (

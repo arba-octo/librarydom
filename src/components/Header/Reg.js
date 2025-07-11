@@ -1,5 +1,5 @@
 import { Formik } from 'formik';
-import InputFormik from "./Input";
+import InputFormik from "@/components/Header/Input";
 
 
 function Reg() {

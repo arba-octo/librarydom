@@ -2,8 +2,8 @@ import React, {useState} from "react";
 import {useDispatch} from "react-redux";
 import useEmblaCarousel from 'embla-carousel-react';
 import {Box, ButtonGroup, Button } from "@mui/material";
-import {addFavourite} from "../../../../dev/library/library-dom/src/features/favourites/favourites-slice";
-import ImageZoom from "../ImageZoom";
+import {addFavourite} from "@/features/favourites/favourites-slice";
+import ImageZoom from "@/components/ImageZoom";
 
 
 function BookCard({book}) {

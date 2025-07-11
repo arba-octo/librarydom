@@ -1,9 +1,9 @@
 import {useDispatch} from "react-redux";
-import { removeFavourite } from "../../../dev/library/library-dom/src/features/favourites/favourites-slice";
+import { removeFavourite } from "@/features/favourites/favourites-slice";
 import {Button} from "@mui/material";
-import ModalToTelegramOneBook from "./Modals/ModalToTelegramOneBook";
-import {openModal} from "../../../dev/library/library-dom/src/features/modal-slice";
-import ModalComponent from "./Modals/ModalComponent";
+import ModalToTelegramOneBook from "@/components/Modals/ModalToTelegramOneBook";
+import {openModal} from "@/features/modal-slice";
+import ModalComponent from "@/components/Modals/ModalComponent";
 
 function Favourite ({book}) {
     // Данные которые передаются на сервер и далее в телеграмм
