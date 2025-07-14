@@ -1,0 +1,67 @@
+.book__card {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 800px 1fr;
+    column-gap: 20px;
+    border-radius: 15px;
+}
+.book__mainImg {
+    display: block;
+    width: auto;
+    max-width: 800px;
+    height: 600px;
+}
+.book__descript-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 387px;
+}
+.book__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.book__title {
+    color: var(--color-grey);
+    margin-top: 15px;
+    margin-bottom: 0;
+    font-size: 18px;
+    text-align: center;
+}
+.book_author {
+    text-align: center;
+    font-size: 16px;
+    color: var(--color-grey);
+    margin: 5px 0 0 0;
+}
+.book__text-descript {
+    border-spacing: 10px
+}
+.table__first-column {
+
+}
+.book__comments {
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+.embla-gallery {
+    width: 387px;
+    overflow-x: hidden;
+}
+.embla-gallery__container {
+    display: flex;
+    column-gap: 3px;
+    width: 387px;
+    align-items: flex-start;
+    object-fit: contain;
+}
+.embla-gallery__slide {
+    display: flex;
+    min-width: 0;
+    width: 100%;
+    height: auto;
+    flex: 1 1 0;
+    max-height: 200px;
+}

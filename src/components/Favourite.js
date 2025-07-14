@@ -1,27 +1,34 @@
-import {useDispatch} from "react-redux";
-import { removeFavourite } from "@/features/favourites/favourites-slice";
+import Image from "next/image";
+import styles from "@/components/Favourite.module.css";
 import {Button} from "@mui/material";
 import ModalToTelegramOneBook from "@/components/Modals/ModalToTelegramOneBook";
-import {openModal} from "@/features/modal-slice";
 import ModalComponent from "@/components/Modals/ModalComponent";
+import {openModal} from "@/features/modal-slice";
+
+function removeFavourBook(book) {
+    let favourites = localStorage.getItem("favourites");
+    favourites = favourites ? JSON.parse(favourites) : [];
+    if (favourites === []) {alert ('В Избранном нет книг')};
+    if (!favourites.includes(book)) {alert ('Данная книга отсутствует в Избранном')}
+    favourites = favourites.filter((favouriteItem) => favouriteItem.id !== book.id);
+    localStorage.setItem("favourites", JSON.stringify(favourites));
+}
 
 function Favourite ({book}) {
     // Данные которые передаются на сервер и далее в телеграмм
     const dataBook = `Читать книгу: ${book.title} (${book.author})`;
-    // Используется при удалении книги из Избранного и открытия модального окна
-    const dispatch = useDispatch();
 
     return (
-        <div className="favourite">
-            <img src={book.faceImg[0]} className="favourite__book-img" alt="book"/>
-            <div className="favourite__descript">
-                <span className="favourite__descript_item">{book.title}</span>
-                <span className="favourite__descript_item">{book.author}</span>
-                <span className="favourite__descript_item">{book.series}</span>
+        <div className={styles.favourite}>
+            <Image src={book.faceImg[0]} className={styles["favourite__book-img"]} alt="book"/>
+            <div className={styles.favourite__descript}>
+                <span>{book.title}</span>
+                <span>{book.author}</span>
+                <span>{book.series}</span>
                 <div>
                     <Button type="submit" onClick={() => { dispatch(openModal()) }} >Читать эту книгу!</Button>
                     <span>|</span>
-                    <Button type="button" className="delete" onClick={() => {dispatch(removeFavourite(book))}}>Удалить</Button>
+                    <Button type="button" onClick={() => removeFavourBook(book)}>Удалить</Button>
                 </div>
             </div>
             <ModalComponent dataBook={dataBook}>

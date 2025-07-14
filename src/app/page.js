@@ -1,22 +1,10 @@
-"use client";
-import { Provider } from "react-redux";
-import { store } from "@/store";
-import Header from "@/components/Header/Header";
-import SideBar from "@/components/SideBar/SideBar";
-import LineSeparate from "@/components/LineSeparate";
-import Books from "@/components/Books/Books";
+import HomeClient from "@/components/HomeClient";
 
-export default function Home() {
-  return (
-      <Provider store={store}>
-          <div className="App">
-              <Header/>
-              <LineSeparate/>
-              <div className="section content">
-                  <SideBar/>
-                  <Books/>
-              </div>
-          </div>
-      </Provider>
-  );
+// Серверный компонент (SSR)
+export default async function Home() {
+    // Лучше явно указывать протокол и порт, если API локальный
+    const res = await fetch("http://localhost:3000/api/v1/books", { cache: "no-store" });
+    const books = await res.json();
+
+    return <HomeClient books={books} />;
 }

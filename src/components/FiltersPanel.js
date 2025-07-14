@@ -1,14 +1,18 @@
-import Filter from "@/components/Filter";
+'use client';
+
 import {useDispatch, useSelector} from "react-redux";
+import styles from "@/components/FiltersPanel.module.css";
+import Filter from "@/components/Filter";
+import {AGE_TO_FILTER, AGE, TITLE, SERIESID, AUTHOR} from "@/data/constants";
 import {
     selectAge,
     selectAgeToFilter,
     selectTitle,
     selectAuthor,
     removeFilterAction,
-    selectActiveFilters, selectSeriesId,
+    selectActiveFilters,
+    selectSeriesId,
 } from "@/features/search/search-slice";
-import {AGE_TO_FILTER, AGE, TITLE, SERIESID, AUTHOR} from "@/data/constants";
 import {selectBooks} from "@/features/books-slice";
 import {selectAllSeries} from "@/features/series-slice";
 
@@ -58,7 +62,7 @@ function FiltersPanel() {
     };
 
     return (
-        <div className="filters-panel">
+        <div className={styles["filters-panel"]}>
             {activeFilters.map((filterItem) => {
                 let currentFilter = null;
                 if (filterItem.id === AGE_TO_FILTER) {currentFilter = filters.ageFilterToPanel}

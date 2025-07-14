@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import Image from "next/image";
 
 const magnifierSize = 150; // Размер окна увеличения
 const zoom = 2;
@@ -33,7 +34,7 @@ export default function ImageMagnifier({ src, alt, width, height }) {
         <div
             style={{ display: "inline-block", position: "relative" }}
         >
-            <img
+            <Image
                 src={src}
                 alt={alt}
                 ref={imgRef}

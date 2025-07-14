@@ -1,3 +1,4 @@
+import styles from "@/components/SideBar/SideBarInput.module.css";
 
 function SideBarInput(props) {
     return (

@@ -1,0 +1,11 @@
+.favourite {
+    margin-top: 10px;
+    display: flex;
+    column-gap: 10px;
+}
+.favourite__book-img {
+    width: 60px;
+}
+.favourite__descript_item {
+    display: block;
+}

@@ -1,15 +1,24 @@
+'use client'
+
 import React, {useState} from "react";
-import {useDispatch} from "react-redux";
+import Image from "next/image";
 import useEmblaCarousel from 'embla-carousel-react';
 import {Box, ButtonGroup, Button } from "@mui/material";
-import {addFavourite} from "@/features/favourites/favourites-slice";
 import ImageZoom from "@/components/ImageZoom";
+import styles from "@/components/Books/BookCard.module.css";
+import useLocalStorage from "@/features/useLocalStorage";
 
+function addFavourBook(book) {
+    // Читаем favourites из localStorage, если нет — используем пустой массив
+    let favourites = localStorage.getItem("favourites");
+    favourites = favourites ? JSON.parse(favourites) : [];
+    favourites.push(book); // Добавляем новую книгу
+    localStorage.setItem("favourites", JSON.stringify(favourites));
+};
 
 function BookCard({book}) {
     // Для галереи, выполненной на Embla Crausel
-    const [emblaRef] = useEmblaCarousel()
-    const dispatch = useDispatch();
+    const [emblaRef] = useEmblaCarousel();
     // Вытаскиваем из book только картинки - создаем масив с массивом картинок из БД
     const images = [
         ...(book.faceImg ? [book.faceImg] : []),
@@ -23,23 +32,23 @@ function BookCard({book}) {
     const [selectedImg, setSelectedImg] = useState(images[0]);
 
     return (
-        <div className="book__card">
+        <div className={styles.book__card}>
            {/* Область для увеличенного изображения */}
            <ImageZoom
                src={selectedImg}
                alt="Главная"
-               className="book__mainImg"
+               className={styles.book__mainImg}
                width="auto"
                height="600px"
            />
-           <div className="book__descript-content">
-               <div className="book__text">
-                   <p className="book__title">{book.title}</p>
-                   <p className="book_author">{book.author}</p>
-                       <table className="book__text-descript">
+           <div className={styles["book__descript-content"]}>
+               <div className={styles.book__text}>
+                   <p className={styles.book__title}>{book.title}</p>
+                   <p className={styles.book_author}>{book.author}</p>
+                       <table className={styles["book__text-descript"]}>
                             <tbody>
                             <tr>
-                                <td className="table__first-column">Серия</td>
+                                <td className={styles["table__first-column"]}>Серия</td>
                                 <td>{book.series}</td>
                             </tr>
                             <tr>
@@ -52,11 +61,11 @@ function BookCard({book}) {
                             </tr>
                             <tr>
                                 <td>
-                                    <button className="book__comments" onClick={handleClickToView}>Отзывы
+                                    <button className={styles.book__comments} onClick={handleClickToView}>Отзывы
                                         ({book.comments.length})
                                     </button>
                                     {comments && book.comments.map((commentItem) => {
-                                        return <div>{commentItem.user}: {commentItem.text}</div>
+                                        return (<div>{commentItem.user}: {commentItem.text}</div>)
                                     })}
                                 </td>
                             </tr>
@@ -77,7 +86,7 @@ function BookCard({book}) {
                             }}
                        >
                             <ButtonGroup variant="text" aria-label="Basic button group">
-                                <Button onClick={() => dispatch(addFavourite(book))}>Добавить в Избранное</Button>
+                                <Button onClick={() => addFavourBook(book)}>Добавить в Избранное</Button>
                                 <Button>Взять книгу</Button>
                             </ButtonGroup>
                        </Box>
@@ -85,14 +94,16 @@ function BookCard({book}) {
                    <hr className="line__section-separate"/>
 
                    {/* Галерея превью */}
-                   <div className="embla-gallery" ref={emblaRef}>
-                       <div className="embla-gallery__container">
+                   <div className={styles["embla-gallery"]} ref={emblaRef}>
+                       <div className={styles["embla-gallery__container"]}>
                             {images.map((imgItem) => (
-                                    <img
+                                    <Image
                                         key={imgItem}
+                                        width={800}
+                                        height={600}
                                         onClick={() => setSelectedImg(imgItem)}
                                         src={imgItem} alt="Изображение"
-                                        className="embla-gallery__slide"
+                                        className={styles["embla-gallery__slide"]}
                                     />
                             ))}
                        </div>

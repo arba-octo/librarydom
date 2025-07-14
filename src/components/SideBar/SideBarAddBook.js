@@ -1,7 +1,7 @@
 import { Formik } from 'formik';
 import {nanoid} from 'nanoid';
 import {useDispatch} from "react-redux";
-import {styles} from "../../../../dev/library/library-dom/src/data/mui-styles";
+import {styles} from "@/data/mui-styles";
 import {Slider, TextField, Typography, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, ButtonGroup, Button, InputLabel, Select, MenuItem} from "@mui/material";
 import {addBook} from "@/features/books-slice";
 import SideBarInput from "@/components/SideBar/SideBarInput";

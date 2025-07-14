@@ -1,40 +1,43 @@
+"use client";
+
+import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import Link from "next/link";
 import Image from "next/image";
 import {changeValueAction, selectSearch, setSearch} from "@//features/search/search-slice";
 import {useValue} from "@/features/search/use-value";
 import {selectBooks} from "@/features/books-slice";
-import logo from "@/images/logo.svg";
 import {selectFavourites} from "@/features/favourites/favourites-slice";
+import styles from "@/components/Header/Header.module.css";
 
-function Header() {
+function Header({ books }) {
+    // Локальный state для строки поиска search в заголовке
     const [search, handleChangeSearch] = useValue(selectSearch, changeValueAction);
-    const dispatch = useDispatch();
-    const books = useSelector(selectBooks);
-    const favourites = useSelector(selectFavourites);
+    // Локальный стейт для первичной загрузки Избранного из localStorage
+    const [favourites, setFavourites] = useState([]);
+    useEffect(() => {
+        // Чтение из localStorage только на клиенте
+        const favs = localStorage.getItem("favourites");
+        setFavourites(favs ? JSON.parse(favs) : []);
+    }, []);
+    // console.log('favourites (пришло из ls в Header) = ', favourites);
 
     return (
-        <header className="section header">
+        <header className={`section ${styles.header}`}>
             <Link href="/librarydom">
-                <Image className="header__logo" src={logo} alt="БиблиоDом лого" priority></Image>
+                <Image src="/images/ui-img/logo.svg" width={300} height={100} alt="БиблиоDом лого" priority></Image>
             </Link>
             <input
                 id="search"
-                className="header__search"
+                className={styles.header__search}
                 type="text"
                 placeholder="Поиск"
                 value={search}
                 onChange={handleChangeSearch}
                 onBlur={() => dispatch(setSearch({search, books}))}
             />
-            <div className="header__menu">
-
-                {/*
-                Скрываем элементы авторизаии и регистрации, пока не настроен сервер
-                <LinkToOpenModal width={600} name="Войти" content={<AuthForm />} />
-                <LinkToOpenModal width={600} name="Зарегистрироваться" content={<Reg />} />
-                */}
-                <Link href='/favourites' className='favourites'>{`Избранное (${favourites.length})`}</Link>
+            <div className={styles.header__menu}>
+                <Link href='/favourites' className={styles.header__favourites}>{`Избранное (${favourites.length})`}</Link>
             </div>
         </header>
     )

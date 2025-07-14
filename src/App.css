@@ -1,68 +1,6 @@
-
-.header {
-  display: flex;
-  justify-content: space-between;
-}
-.header__logo {
-
-}
-.header__search {
-  width: 500px;
-  background-color: #F0F8FA;
-  border: none;
-  border-radius: 6px;
-  padding: 0 10px;
-}
-.header__search:focus {
-  border-color: #CCC9C9;
-}
-.header__menu {
-  display: flex;
-  column-gap: 20px;
-}
 /*------------------------------ CONTENT ----------------------------------*/
-.content {
-  display: flex;
-  column-gap: 30px;
-  color: #434343;
-}
 /*------------------------------------- SIDE BAR  -------------------------------------*/
-.side-bar {
-  width: 500px;
-  display: flex;
-  flex-direction: column;
-  row-gap: 20px;
-}
-.side-bar__item {
-  display: flex;
-  flex-direction: column;
-  column-gap: 10px;
-  font-size: 18px;
-  color: #434343;
-  margin-top: 20px;
-}
-.side-bar__title {
-  margin-bottom: 10px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  column-gap: 10px;
-}
-.side-bar__title img {
-  display: block;
-  padding-top: 10px;
-}
 /*---------------------- SIDE BAR INPUTS--------------------*/
-.side-bar__label {
-  display: inline-block;
-  margin-top: 10px;
-  font-size: 17px;
-}
-.side-bar__inputs {
-  display: flex;
-  flex-direction: column;
-  margin-top: 5px;
-}
 .side-bar__input-wrapper {
   margin-top: 10px;
   display: flex;
@@ -79,30 +17,6 @@
 }
 .side-bar__slider {
   margin-top: 30px;
-}
-.side-bar__clear-button {
-  color: #ED2124;
-  border: none;
-  background: none;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
-  font-size: 16px;
-  margin-top: 10px;
-  cursor: pointer;
-}
-.clear {
-  cursor: pointer;
-}
-.clear::before {
-  display: inline-block;
-  content: '';
-  background-image: url("./images/icon_delete.svg");
-  background-repeat: no-repeat;
-  background-size: 12px 12px;
-  width: 12px;
-  height: 12px;
-  margin-right: 5px;
 }
 /*------------------------ SIDE-BAR  ADD-BOOKS --------------------------*/
 .side-bar__add-book {
@@ -122,7 +36,7 @@
 }
 .after:after {
   content: "";
-  background-image: url("./images/add-book_open.svg");
+  background-image: url("../public/images/ui-img/add-book_open.svg");
   background-size: 51px 27px;
   width: 51px;
   height: 27px;
@@ -132,129 +46,20 @@
   cursor: pointer;
 }
 /*--------------------- FILTERS PANEL -------------------*/
-.filters-panel {
-  margin-top: 10px;
-  display: flex;
-  column-gap: 20px;
-}
-.filter-panel__filter {
-  display: flex;
-  align-items: center;
-}
 /*------------------------ BOOKs ------------------------*/
-.books {
-  margin-top: 20px;
-}
-.books__catalog {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  column-gap: 20px;
-  row-gap: 10px;
-}
-.book {
-  background-color: #F5F5F5;
-  border-radius: 18px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0 5px 5px 5px;
-  cursor: pointer;
-}
-.book__preview {
-  width: 139px;
-}
-.book__title {
-  margin-top: 15px;
-  margin-bottom: 0;
-  font-size: 18px;
-  color: var(--color-black);
-  text-align: center;
-}
-.book__author {
-  font-size: 16px;
-  color: var(--color-grey);
-  text-align: center;
-  margin: 5px 0 0 0;
-}
-.book__pages {
-  font-size: 16px;
-  color: var(--color-grey);
-  margin: 5px 0 0 0;
-}
 /* -------------------- BOOK CARD -----------------------*/
-.book__card {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 800px 1fr;
-  column-gap: 20px;
-  border-radius: 15px;
-}
-.book__mainImg {
-  display: block;
-  width: auto;
-  max-width: 800px;
-  height: 600px;
-}
-.book__descript-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 387px;
-}
-.book__text {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-.book__title {
-  font-size: 21px;
-  color: var(--color-grey);
-}
-.book_author {
-  text-align: center;
-}
-.book__text-descript {
-  border-spacing: 10px
-}
-.table__first-column {
-
-}
 .book_face-preview {
   height: 100px;
 }
-.book__comments {
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-}
 /*------------- embla-gallery ------------*/
-.embla-gallery {
-  width: 387px;
-  overflow-x: hidden;
-}
-.embla-gallery__container {
-  display: flex;
-  column-gap: 3px;
-  width: 387px;
-  align-items: flex-start;
-  object-fit: contain;
-}
-.embla-gallery__slide {
-  display: flex;
-  min-width: 0;
-  width: 100%;
-  height: auto;
-  flex: 1 1 0;
-  max-height: 200px;
-}
+
+
+
 /*--------------------- favourites ---------------------*/
 .favour-content {
   margin-top: 50px;
 }
-.favourites {
-  color: var(--color-dark-green);
-  position: relative;
-}
+
 .favourites::before {
   content: "";
   display: inline-block;
@@ -273,20 +78,10 @@
   grid-template-columns: repeat(3, 1fr);
   margin-top: 10px;
 }
-.favourite {
-  margin-top: 10px;
-  display: flex;
-  column-gap: 10px;
-}
-.favourite__book-img {
-  width: 60px;
-}
-.favourite__descript_item {
-  display: block;
-}
-.favourite__modal_button-text {
-  font-size: 16px;
-}
+
+
+
+
 /*------------------------ NOT-FOUND -----------------------------*/
 .not-found {
   margin: 50px auto 0 auto;

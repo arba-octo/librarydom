@@ -1,5 +1,6 @@
 import {useSelector, useDispatch} from 'react-redux';
-import {styles} from "@/data/mui-styles";
+import styles from "@/components/SideBar/SideBarSearch.module.css";
+import {styles as muiStyles} from "@/data/mui-styles";
 import {Slider, TextField, Typography, Select, MenuItem, FormControl, InputLabel} from "@mui/material";
 import {
     setFilter,
@@ -31,7 +32,7 @@ function SideBarSearch(props) {
     const books = useSelector(selectBooks); // массив с книгами из БД
 
     return (
-        <div className="side-bar__inputs">
+        <div className={styles["side-bar__inputs"]}>
             <Typography id="age" gutterBottom>
                 Возраст читателя
             </Typography>
@@ -44,13 +45,12 @@ function SideBarSearch(props) {
                 max={18}
                 valueLabelDisplay="auto"
                 marks={marks}
-                sx={{color: styles.color.green}}
+                sx={{color: muiStyles.color.green}}
                 onChange={(evt) => dispatch(changeValueAction({id: "age", value: evt.target.value}))}
                 onClick={(evt) => dispatch(setFilter({id: "ageToFilter", value: age, books}))}
             />
             <TextField
                 id="title"
-                className="input-error"
                 variant="standard"
                 label="Название / ключевое слово"
                 value={title}
@@ -70,6 +70,7 @@ function SideBarSearch(props) {
                         dispatch(setFilter({id: "seriesId", value: evt.target.value, books}))
                     } }
                     label="Series"
+                    sx={muiStyles.select}
                 >
                     <MenuItem value="">
                         <em>Без серии</em>
@@ -92,7 +93,7 @@ function SideBarSearch(props) {
                 sx={{ mt: 1, minWidth: 120, '& label.Mui-focused': {color: '#9eb017'}, '&.Mui-focused fieldset': {borderColor: '#9eb017'} }}
             />
             <button
-                className="clear side-bar__clear-button"
+                className={`clear ${styles["side-bar__clear-button"]}`}
                 onClick={(evt) => {
                     dispatch(clearAllFiltersAction(books));
                 }}
@@ -100,4 +101,5 @@ function SideBarSearch(props) {
         </div>
     )
 }
+
 export default SideBarSearch;

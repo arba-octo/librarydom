@@ -1,7 +1,9 @@
 import * as React from 'react';
+import Image from "next/image";
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import BookCard from "@/components/Books/BookCard";
+import styles from "@/components/Books/Book.module.css";
 
 // Стили для модального окна
 const style = {
@@ -17,13 +19,12 @@ const style = {
 };
 
 function Book({book}) {
-    //console.log('book (приходит в Book) = ', book);
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     return (
-        <div className="book">
+        <div className={styles.book}>
                 <Box sx={{
                         display: 'flex',
                         flexDirection: 'column',
@@ -36,7 +37,7 @@ function Book({book}) {
                         }}
                      onClick={handleOpen}
                 >
-                    { book.faceImg && <img className="book__preview" src={book.faceImg} alt="Книга"/> }
+                    { book.faceImg && <Image width={139} height={104} className={styles.book__preview} src={book.faceImg} alt="Книга"/> }
                     <Box sx={{fontSize: '18px', color: '#020202', textAlign: 'center'}}>{book.title}</Box>
                     <Box sx={{fontSize: '16px', color: '#787878', textAlign: 'center'}}>{book.author}</Box>
                     <Box sx={{fontSize: '16px', color: '#787878', textAlign: 'center', mt: '5px'}}>{book.pages} стр.</Box>

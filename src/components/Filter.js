@@ -1,8 +1,9 @@
+import styles from "@/components/Favourite.module.css";
 
 function Filter(props) {
     return (
         <div
-            className="clear filter-panel__filter"
+            className={`clear ${styles["filter-panel__filter"]}`}
             id={props.id}
             onClick={props.onClick}
         >
