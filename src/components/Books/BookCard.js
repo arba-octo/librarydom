@@ -6,7 +6,6 @@ import useEmblaCarousel from 'embla-carousel-react';
 import {Box, ButtonGroup, Button } from "@mui/material";
 import ImageZoom from "@/components/ImageZoom";
 import styles from "@/components/Books/BookCard.module.css";
-import useLocalStorage from "@/features/useLocalStorage";
 
 function addFavourBook(book) {
     // Читаем favourites из localStorage, если нет — используем пустой массив
@@ -64,9 +63,9 @@ function BookCard({book}) {
                                     <button className={styles.book__comments} onClick={handleClickToView}>Отзывы
                                         ({book.comments.length})
                                     </button>
-                                    {comments && book.comments.map((commentItem) => {
-                                        return (<div>{commentItem.user}: {commentItem.text}</div>)
-                                    })}
+                                    {comments && book.comments.map((commentItem) =>
+                                        <div key={commentItem.id}>{commentItem.user}: {commentItem.text}</div>
+                                    )}
                                 </td>
                             </tr>
                             </tbody>

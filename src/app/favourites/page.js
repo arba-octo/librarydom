@@ -1,3 +1,5 @@
+'use client';
+
 import Header from "@/components/Header/Header";
 import {useDispatch, useSelector} from "react-redux";
 import {selectFavourites} from "@/features/favourites/favourites-slice";

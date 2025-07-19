@@ -11,7 +11,7 @@ import {selectFavourites} from "@/features/favourites/favourites-slice";
 import styles from "@/components/Header/Header.module.css";
 
 function Header({ books }) {
-    // Локальный state для строки поиска search в заголовке
+    // Глобальный state для строки поиска search в заголовке
     const [search, handleChangeSearch] = useValue(selectSearch, changeValueAction);
     // Локальный стейт для первичной загрузки Избранного из localStorage
     const [favourites, setFavourites] = useState([]);
@@ -20,7 +20,6 @@ function Header({ books }) {
         const favs = localStorage.getItem("favourites");
         setFavourites(favs ? JSON.parse(favs) : []);
     }, []);
-    // console.log('favourites (пришло из ls в Header) = ', favourites);
 
     return (
         <header className={`section ${styles.header}`}>
