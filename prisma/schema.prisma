@@ -11,6 +11,7 @@ datasource db {
 
 model Books {
   id                Int         @id @default(autoincrement())
+  key               String      @unique
   title             String
   author            String?
   series            Series?     @relation("SeriesBooks", fields: [seriesId], references: [id])
@@ -47,7 +48,7 @@ model Users {
     password        String
     whatsUp         Boolean
     telegram        Boolean
-    email           String
+    email           String      @unique
     regData DateTime @default(now()) // автоматически устанавливается текущее время при создании
     rating          Int
     ownedBooks      Books[]     @relation("OwnerBooks")
@@ -57,12 +58,14 @@ model Users {
 
 model Types {
     id              Int         @id @default(autoincrement())
+    key             String      @unique
     name            String
     booksType       Books[]     @relation("TypeBooks")
 }
 
 model Comments {
     id              Int         @id @default(autoincrement())
+    key             String      @unique
     user            Users       @relation(fields: [userId], references: [id])
     userId          Int
     book            Books       @relation(fields: [bookId], references: [id])

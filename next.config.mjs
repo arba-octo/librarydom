@@ -1,8 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+export default {
     images: {
-        domains: ['librarydom.ru'],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'librarydom.ru',
+            },
+        ],
     },
-};
-
-export default nextConfig;
+}

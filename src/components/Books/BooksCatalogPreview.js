@@ -20,7 +20,6 @@ function BooksCatalogPreview() {
             .catch(err => console.log("Ошибка загрузка книг из базы данных:", err));
     }, [dispatch])
 
-    console.log('filteredBooks (из redux в BooksCatalogPreview) = ', filteredBooks);
     if (filteredBooks.length === 0) {
         return <div>Идет загрузка данных с сервера (книги) ...</div>;
     }
