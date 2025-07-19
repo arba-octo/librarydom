@@ -1,0 +1,31 @@
+.side-bar {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+.side-bar__item {
+    display: flex;
+    flex-direction: column;
+    column-gap: 10px;
+    font-size: 18px;
+    color: #434343;
+    margin-top: 20px;
+}
+.side-bar__search {
+
+}
+.side-bar__title {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    column-gap: 10px;
+}
+.side-bar__title img {
+    display: block;
+    padding-top: 10px;
+}
+.side-bar__title-search {
+
+}

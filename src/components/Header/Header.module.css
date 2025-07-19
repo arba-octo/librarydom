@@ -1,0 +1,22 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+.header__search:focus {
+    border-color: #CCC9C9;
+}
+.header__search {
+    width: 500px;
+    background-color: #F0F8FA;
+    border: none;
+    border-radius: 6px;
+    padding: 0 10px;
+}
+.header__menu {
+     display: flex;
+     column-gap: 20px;
+ }
+.header__favourites {
+    color: var(--color-dark-green);
+    position: relative;
+}

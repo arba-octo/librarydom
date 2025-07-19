@@ -25,16 +25,8 @@ a {
   text-decoration: none;
 }
 
-.section {
-  width: 1440px;
-  margin: 10px auto 0 auto;
-}
-.line__section-separate {
-  height: 1px;
-  background-color: #CBE21D;
-  margin-top: 10px;
-  position: relative;
-}
+
+
 input::placeholder {
   color: #CCC9C9;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
