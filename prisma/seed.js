@@ -155,6 +155,7 @@ async function main() {
             ownerId: userDanaArb.id,
             userId: null,
             firstSelfReading: false,
+            comments: null,
             checked: true
         },
         create: {
@@ -825,7 +826,7 @@ async function main() {
 
     // Создаем комментарии - после создания книг, так как на них будет ссылка
     const comments1 = await prisma.comments.upsert({
-        where: { key: "comments" },
+        where: { key: "comments1" },
         update: {
             bookId: book1.id,
             userId: userDanaArb.id,

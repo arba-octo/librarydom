@@ -16,6 +16,7 @@ function addFavourBook(book) {
 };
 
 function BookCard({book}) {
+    console.log('book (приходит в props в BookCard) = ', book);
     // Для галереи, выполненной на Embla Crausel
     const [emblaRef] = useEmblaCarousel();
     // Вытаскиваем из book только картинки - создаем масив с массивом картинок из БД
@@ -25,8 +26,8 @@ function BookCard({book}) {
         ...(Array.isArray(book.exampleImg) ? book.exampleImg.flat(Infinity) : book.exampleImg ? [book.exampleImg] : []),
     ];
     // Локальный стейт и отслеживатель для отображения комментариев:
-    const [comments, setComments] = useState(false);
-    const handleClickToView = () => { setComments(!comments); }
+    const [commentsView, setCommentsView] = useState(false);
+    const handleClickToView = () => { setCommentsView(!commentsView); }
     // Локальный стект для отображения главной картинки:
     const [selectedImg, setSelectedImg] = useState(images[0]);
 
@@ -43,13 +44,15 @@ function BookCard({book}) {
            <div className={styles["book__descript-content"]}>
                <div className={styles.book__text}>
                    <p className={styles.book__title}>{book.title}</p>
-                   <p className={styles.book_author}>{book.author}</p>
-                       <table className={styles["book__text-descript"]}>
+                   { !book.author && <p className={styles.book_author}>{book.author}</p> }
+               <table className={styles["book__text-descript"]}>
                             <tbody>
-                            <tr>
-                                <td className={styles["table__first-column"]}>Серия</td>
-                                <td>{book.series}</td>
-                            </tr>
+                            {!book.series &&
+                                <tr>
+                                    <td className={styles["table__first-column"]}>Серия</td>
+                                    <td>{book.series}</td>
+                                </tr>
+                            }
                             <tr>
                                 <td>Страниц</td>
                                 <td>{book.pages}</td>
@@ -61,10 +64,12 @@ function BookCard({book}) {
                             <tr>
                                 <td>
                                     <button className={styles.book__comments} onClick={handleClickToView}>Отзывы
-                                        ({book.comments.length})
+                                        (
+                                        {book.comments && book.comments.length}
+                                        )
                                     </button>
-                                    {comments && book.comments.map((commentItem) =>
-                                        <div key={commentItem.id}>{commentItem.user}: {commentItem.text}</div>
+                                    {commentsView && book.comments.map((commentItem) =>
+                                        <div key={commentItem.key}>{commentItem.userId}: {commentItem.text}</div>
                                     )}
                                 </td>
                             </tr>

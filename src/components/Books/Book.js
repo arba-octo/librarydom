@@ -6,7 +6,7 @@ import BookCard from "@/components/Books/BookCard";
 import styles from "@/components/Books/Book.module.css";
 
 // Стили для модального окна
-const style = {
+const muiStyle = {
     position: 'absolute',
     top: '50%',
     left: '50%',
@@ -47,7 +47,7 @@ function Book({book}) {
                 open={open}
                 onClose={handleClose}
             >
-                <Box sx={style}>
+                <Box sx={muiStyle}>
                     <BookCard
                         id={book.id}
                         book={book}
