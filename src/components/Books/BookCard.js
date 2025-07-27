@@ -65,7 +65,7 @@ function BookCard({book}) {
                                 <td>
                                     <button className={styles.book__comments} onClick={handleClickToView}>Отзывы
                                         (
-                                        {book.comments && book.comments.length}
+                                        {book.comments ? book.comments.length : "0"}
                                         )
                                     </button>
                                     {commentsView && book.comments.map((commentItem) =>

@@ -99,27 +99,9 @@ async function main() {
         }
     });
 
-    // Создаём книги — обязательно указываем ownerId, seriesId и (опционально) userId ---------------------------
-    const book1 = await prisma.books.upsert({
-        where: { key: "book1" },
-        update: {
-            title: "Роболты. Улётная история!!!",
-            author: "Матюшкина Катя, Сильвер Саша",
-            seriesId: null,
-            typeId: typeChildDetect.id,
-            pages: 400,
-            age: [4, 10],
-            faceImg: "https://librarydom.ru/images/robolts_face.jpg",
-            tocImg: ["htt/librarydom.ru/images/robolts_toc.jpg"],
-            exampleImg: "https://librarydom.ru/images/robolts_examp.jpg",
-            statusFree: true,
-            occupiedTo: null,
-            ownerId: userDanaArb.id,
-            userId: null,
-            firstSelfReading: false,
-            checked: true,
-        },
-        create: {
+    // Создаём книги ---------------------------
+    const book1 = await prisma.books.create({
+        data: {
             key: "book1",
             title: "Роболты. Улётная история!!!",
             author: "Матюшкина Катя, Сильвер Саша",
@@ -127,9 +109,9 @@ async function main() {
             typeId: typeChildDetect.id,
             pages: 400,
             age: [4, 10],
-            faceImg: "https://librarydom.ru/images/robolts_face.jpg",
-            tocImg: ["https://librarydom.ru/images/robolts_toc.jpg"],
-            exampleImg: "https://librarydom.ru/images/robolts_examp.jpg",
+            faceImg: "/images/robolts_face.jpg",
+            tocImg: ["/images/robolts_toc.jpg"],
+            exampleImg: "/images/robolts_examp.jpg",
             statusFree: true,
             occupiedTo: null,
             ownerId: userDanaArb.id,
@@ -138,27 +120,8 @@ async function main() {
             checked: true
         }
     });
-    const book2 = await prisma.books.upsert({
-        where: { key: "book2" },
-        update: {
-            title: "Драконы. Твоя первая энциклопедия",
-            author: null,
-            seriesId: null,
-            typeId: typeEncic.id,
-            pages: 128,
-            age: [3, 8],
-            faceImg: "https://librarydom.ru/images/dragons_first-ciclopedia_face.jpg",
-            tocImg: [],
-            exampleImg: "https://librarydom.ru/images/dragons_first-ciclopedia_examp.jpg",
-            statusFree: true,
-            occupiedTo: null,
-            ownerId: userDanaArb.id,
-            userId: null,
-            firstSelfReading: false,
-            comments: null,
-            checked: true
-        },
-        create: {
+    const book2 = await prisma.books.create({
+        data: {
             key: "book2",
             title: "Драконы. Твоя первая энциклопедия",
             author: null,
@@ -166,9 +129,9 @@ async function main() {
             typeId: typeEncic.id,
             pages: 128,
             age: [3, 8],
-            faceImg: "https://librarydom.ru/images/dragons_first-ciclopedia_face.jpg",
+            faceImg: "/images/dragons_first-ciclopedia_face.jpg",
             tocImg: [],
-            exampleImg: "https://librarydom.ru/images/dragons_first-ciclopedia_examp.jpg",
+            exampleImg: "/images/dragons_first-ciclopedia_examp.jpg",
             statusFree: true,
             occupiedTo: null,
             ownerId: userDanaArb.id,
@@ -177,26 +140,8 @@ async function main() {
             checked: true
         }
     });
-    const book3 = await prisma.books.upsert({
-        where: { key: "book3" },
-        update: {
-            title: "Сказки и картинки",
-            author: "Сутеев В.",
-            seriesId: null,
-            typeId: null,
-            pages: 124,
-            age: [1, 7],
-            faceImg: "https://librarydom.ru/images/tales-and-pictures_suteev_face.jpg",
-            tocImg: ["https://librarydom.ru/images/tales-and-pictures_suteev_toc.jpg"],
-            exampleImg: "https://librarydom.ru/images/tales-and-pictures_suteev_examp.jpg",
-            statusFree: true,
-            occupiedTo: null,
-            ownerId: userDanaArb.id,
-            userId: null,
-            firstSelfReading: true,
-            checked: true
-        },
-        create: {
+    const book3 = await prisma.books.create({
+        data: {
             key: "book3",
             title: "Сказки и картинки",
             author: "Сутеев В.",
@@ -204,9 +149,9 @@ async function main() {
             typeId: null,
             pages: 124,
             age: [1, 7],
-            faceImg: "https://librarydom.ru/images/tales-and-pictures_suteev_face.jpg",
-            tocImg: ["https://librarydom.ru/images/tales-and-pictures_suteev_toc.jpg"],
-            exampleImg: "https://librarydom.ru/images/tales-and-pictures_suteev_examp.jpg",
+            faceImg: "/images/tales-and-pictures_suteev_face.jpg",
+            tocImg: ["/images/tales-and-pictures_suteev_toc.jpg"],
+            exampleImg: "/images/tales-and-pictures_suteev_examp.jpg",
             statusFree: true,
             occupiedTo: null,
             ownerId: userDanaArb.id,
@@ -215,26 +160,8 @@ async function main() {
             checked: true
         }
     });
-    const book4 = await prisma.books.upsert({
-        where: { key: "book4" },
-        update: {
-            title: "Всё-всё-всё о муми-троллях для малышей",
-            author: "Янссон Т.",
-            seriesId: null,
-            typeId: null,
-            pages: 224,
-            age: [2, 7],
-            faceImg: "https://librarydom.ru/images/mumy-trolls_face.jpg",
-            tocImg: ["https://librarydom.ru/images/mumy-trolls_toc.jpg"],
-            exampleImg: "https://librarydom.ru/images/mumy-trolls_examp.jpg",
-            statusFree: true,
-            occupiedTo: null,
-            ownerId: userDanaArb.id,
-            userId: null,
-            firstSelfReading: true,
-            checked: true
-        },
-        create: {
+    const book4 = await prisma.books.create({
+        data: {
             key: "book4",
             title: "Всё-всё-всё о муми-троллях для малышей",
             author: "Янссон Т.",
@@ -242,9 +169,9 @@ async function main() {
             typeId: null,
             pages: 224,
             age: [2, 7],
-            faceImg: "https://librarydom.ru/images/mumy-trolls_face.jpg",
-            tocImg: ["https://librarydom.ru/images/mumy-trolls_toc.jpg"],
-            exampleImg: "https://librarydom.ru/images/mumy-trolls_examp.jpg",
+            faceImg: "/images/mumy-trolls_face.jpg",
+            tocImg: ["/images/mumy-trolls_toc.jpg"],
+            exampleImg: "/images/mumy-trolls_examp.jpg",
             statusFree: true,
             occupiedTo: null,
             ownerId: userDanaArb.id,
@@ -253,26 +180,8 @@ async function main() {
             checked: true
         }
     });
-    const book5 = await prisma.books.upsert({
-        where: { key: "book5" },
-        update: {
-            title: "400 самых дюбимых вредных советов",
-            author: "Остер Г.",
-            seriesId: null,
-            typeId: null,
-            pages: 414,
-            age: [7, 13],
-            faceImg: "https://librarydom.ru/images/400-harm-advice_oster_face.jpg",
-            tocImg: [],
-            exampleImg: "https://librarydom.ru/images/400-harm-advice_oster_examp.jpg",
-            statusFree: true,
-            occupiedTo: null,
-            ownerId: userDanaArb.id,
-            userId: null,
-            firstSelfReading: false,
-            checked: true
-        },
-        create: {
+    const book5 = await prisma.books.create({
+        data: {
             key: "book5",
             title: "400 самых дюбимых вредных советов",
             author: "Остер Г.",
@@ -280,9 +189,9 @@ async function main() {
             typeId: null,
             pages: 414,
             age: [7, 13],
-            faceImg: "https://librarydom.ru/images/400-harm-advice_oster_face.jpg",
+            faceImg: "/images/400-harm-advice_oster_face.jpg",
             tocImg: [],
-            exampleImg: "https://librarydom.ru/images/400-harm-advice_oster_examp.jpg",
+            exampleImg: "/images/400-harm-advice_oster_examp.jpg",
             statusFree: true,
             occupiedTo: null,
             ownerId: userDanaArb.id,
@@ -291,26 +200,8 @@ async function main() {
             checked: true
         }
     });
-    const book6 = await prisma.books.upsert({
-        where: { key: "book6" },
-        update: {
-            title: "Повесть Маугли и сказки",
-            author: "Киплинг Р.",
-            seriesId: null,
-            typeId: null,
-            pages: 384,
-            age: [6, 13],
-            faceImg: "https://librarydom.ru/images/kipling_face.jpg",
-            tocImg: ["https://librarydom.ru/images/kipling_toc.jpg"],
-            exampleImg: "https://librarydom.ru/images/kipling_examp.jpg",
-            statusFree: true,
-            occupiedTo: null,
-            ownerId: userDanaArb.id,
-            userId: null,
-            firstSelfReading: false,
-            checked: true
-        },
-        create: {
+    const book6 = await prisma.books.create({
+        data: {
             key: "book6",
             title: "Повесть Маугли и сказки",
             author: "Киплинг Р.",
@@ -318,9 +209,9 @@ async function main() {
             typeId: null,
             pages: 384,
             age: [6, 13],
-            faceImg: "https://librarydom.ru/images/kipling_face.jpg",
-            tocImg: ["https://librarydom.ru/images/kipling_toc.jpg"],
-            exampleImg: "https://librarydom.ru/images/kipling_examp.jpg",
+            faceImg: "/images/kipling_face.jpg",
+            tocImg: ["/images/kipling_toc.jpg"],
+            exampleImg: "/images/kipling_examp.jpg",
             statusFree: true,
             occupiedTo: null,
             ownerId: userDanaArb.id,
@@ -329,26 +220,8 @@ async function main() {
             checked: true
         }
     });
-    const book7 = await prisma.books.upsert({
-        where: { key: "book7" },
-        update: {
-            title: "Земляничная Фея. Удивительное заклинание",
-            author: "Дале Ш.",
-            seriesId: seriesZemlFeya.id,
-            typeId: null,
-            pages: 48,
-            age: [3, 7],
-            faceImg: "https://librarydom.ru/images/zeml-feya-amazing-spells_fase.jpg",
-            tocImg: ["https://librarydom.ru/images/zeml-feya-amazing-spells_toc.jpg"],
-            exampleImg: "https://librarydom.ru/images/zeml-feya-amazing-spells_examp.jpg",
-            statusFree: true,
-            occupiedTo: null,
-            ownerId: userDanaArb.id,
-            userId: null,
-            firstSelfReading: false,
-            checked: true
-        },
-        create: {
+    const book7 = await prisma.books.create({
+        data: {
             key: "book7",
             title: "Земляничная Фея. Удивительное заклинание",
             author: "Дале Ш.",
@@ -356,9 +229,9 @@ async function main() {
             typeId: null,
             pages: 48,
             age: [3, 7],
-            faceImg: "https://librarydom.ru/images/zeml-feya-amazing-spells_fase.jpg",
-            tocImg: ["https://librarydom.ru/images/zeml-feya-amazing-spells_toc.jpg"],
-            exampleImg: "https://librarydom.ru/images/zeml-feya-amazing-spells_examp.jpg",
+            faceImg: "/images/zeml-feya-amazing-spells_fase.jpg",
+            tocImg: ["/images/zeml-feya-amazing-spells_toc.jpg"],
+            exampleImg: "/images/zeml-feya-amazing-spells_examp.jpg",
             statusFree: true,
             occupiedTo: null,
             ownerId: userDanaArb.id,
@@ -367,26 +240,8 @@ async function main() {
             checked: true
         }
     });
-    const book8 = await prisma.books.upsert({
-        where: { key: "book8" },
-        update: {
-            title: "Земляничная Фея. Три волшебные ягодки",
-            author: "Дале Ш.",
-            seriesId: seriesZemlFeya.id,
-            typeId: null,
-            pages: 48,
-            age: [3, 7],
-            faceImg: "https://librarydom.ru/images/zeml-feya-3wildb_face.jpg",
-            tocImg: ["https://librarydom.ru/images/zeml-feya-3wildb_toc.jpg"],
-            exampleImg: "https://librarydom.ru/images/zeml-feya-3wildb_examp.jpg",
-            statusFree: true,
-            occupiedTo: null,
-            ownerId: userDanaArb.id,
-            userId: null,
-            firstSelfReading: false,
-            checked: true
-        },
-        create: {
+    const book8 = await prisma.books.create({
+        data: {
             key: "book8",
             title: "Земляничная Фея. Три волшебные ягодки",
             author: "Дале Ш.",
@@ -394,9 +249,9 @@ async function main() {
             typeId: null,
             pages: 48,
             age: [3, 7],
-            faceImg: "https://librarydom.ru/images/zeml-feya-3wildb_face.jpg",
-            tocImg: ["https://librarydom.ru/images/zeml-feya-3wildb_toc.jpg"],
-            exampleImg: "https://librarydom.ru/images/zeml-feya-3wildb_examp.jpg",
+            faceImg: "/images/zeml-feya-3wildb_face.jpg",
+            tocImg: ["/images/zeml-feya-3wildb_toc.jpg"],
+            exampleImg: "/images/zeml-feya-3wildb_examp.jpg",
             statusFree: true,
             occupiedTo: null,
             ownerId: userDanaArb.id,
@@ -405,26 +260,8 @@ async function main() {
             checked: true
         }
     });
-    const book9 = await prisma.books.upsert({
-        where: { key: "book9" },
-        update: {
-            title: "Котенок Шмяк идёт к доктору",
-            author: "Скоттон Р.",
-            seriesId: seriesShmyak.id,
-            typeId: null,
-            pages: 32,
-            age: [1, 7],
-            faceImg: "https://librarydom.ru/images/shmyak-to-doctor_face.jpg",
-            tocImg: [],
-            exampleImg: "https://librarydom.ru/images/shmyak-to-doctor_face.jpg",
-            statusFree: true,
-            occupiedTo: null,
-            ownerId: userDanaArb.id,
-            userId: null,
-            firstSelfReading: true,
-            checked: true
-        },
-        create: {
+    const book9 = await prisma.books.create({
+        data: {
             key: "book9",
             title: "Котенок Шмяк идёт к доктору",
             author: "Скоттон Р.",
@@ -432,9 +269,9 @@ async function main() {
             typeId: null,
             pages: 32,
             age: [1, 7],
-            faceImg: "https://librarydom.ru/images/shmyak-to-doctor_face.jpg",
+            faceImg: "/images/shmyak-to-doctor_face.jpg",
             tocImg: [],
-            exampleImg: "https://librarydom.ru/images/shmyak-to-doctor_face.jpg",
+            exampleImg: "/images/shmyak-to-doctor_face.jpg",
             statusFree: true,
             occupiedTo: null,
             ownerId: userDanaArb.id,
@@ -443,26 +280,8 @@ async function main() {
             checked: true
         }
     });
-    const book10 = await prisma.books.upsert({
-        where: { key: "book10" },
-        update: {
-            title: "Спокойной ночи, Шмяк!",
-            author: "Скоттон Р.",
-            seriesId: seriesShmyak.id,
-            typeId: null,
-            pages: 31,
-            age: [1, 7],
-            faceImg: "https://librarydom.ru/images/shmyak-good-night_face.jpg",
-            tocImg: [],
-            exampleImg: "https://librarydom.ru/images/shmyak-good-night_examp.jpg",
-            statusFree: true,
-            occupiedTo: null,
-            ownerId: userDanaArb.id,
-            userId: null,
-            firstSelfReading: true,
-            checked: true
-        },
-        create: {
+    const book10 = await prisma.books.create({
+        data: {
             key: "book10",
             title: "Спокойной ночи, Шмяк!",
             author: "Скоттон Р.",
@@ -470,9 +289,9 @@ async function main() {
             typeId: null,
             pages: 31,
             age: [1, 7],
-            faceImg: "https://librarydom.ru/images/shmyak-good-night_face.jpg",
+            faceImg: "/images/shmyak-good-night_face.jpg",
             tocImg: [],
-            exampleImg: "https://librarydom.ru/images/shmyak-good-night_examp.jpg",
+            exampleImg: "/images/shmyak-good-night_examp.jpg",
             statusFree: true,
             occupiedTo: null,
             ownerId: userDanaArb.id,
@@ -481,26 +300,8 @@ async function main() {
             checked: true
         }
     });
-    const book11 = await prisma.books.upsert({
-        where: { key: "book11" },
-        update: {
-            title: "Котенок Шмяк и морские истории",
-            author: "Скоттон Р.",
-            seriesId: seriesShmyak.id,
-            typeId: null,
-            pages: 31,
-            age: [1, 7],
-            faceImg: "https://librarydom.ru/images/shmyak-sea-histories_face.jpg",
-            tocImg: [],
-            exampleImg: "https://librarydom.ru/images/shmyak-sea-histories_examp.jpg",
-            statusFree: true,
-            occupiedTo: null,
-            ownerId: userDanaArb.id,
-            userId: null,
-            firstSelfReading: true,
-            checked: true
-        },
-        create: {
+    const book11 = await prisma.books.create({
+        data: {
             key: "book11",
             title: "Котенок Шмяк и морские истории",
             author: "Скоттон Р.",
@@ -508,9 +309,9 @@ async function main() {
             typeId: null,
             pages: 31,
             age: [1, 7],
-            faceImg: "https://librarydom.ru/images/shmyak-sea-histories_face.jpg",
+            faceImg: "/images/shmyak-sea-histories_face.jpg",
             tocImg: [],
-            exampleImg: "https://librarydom.ru/images/shmyak-sea-histories_examp.jpg",
+            exampleImg: "/images/shmyak-sea-histories_examp.jpg",
             statusFree: true,
             occupiedTo: null,
             ownerId: userDanaArb.id,
@@ -519,26 +320,8 @@ async function main() {
             checked: true
         }
     });
-    const book12 = await prisma.books.upsert({
-        where: { key: "book12" },
-        update: {
-            title: "Новая детская энциклопедия",
-            author: null,
-            seriesId: null,
-            typeId: typeEncic.id,
-            pages: 320,
-            age: [6, 10],
-            faceImg: "https://librarydom.ru/images/new-child-encic_face.jpg",
-            tocImg: ["https://librarydom.ru/images/new-child-encic_toc1.jpg", "https://librarydom.ru/images/new-child-encic_toc2.jpg", "https://librarydom/images/new-child-encic_toc3.jpg", "https://librarydom/images/new-child-encic_toc4.jpg"],
-            exampleImg: "https://librarydom.ru/images/new-child-encic_examp.jpg",
-            statusFree: true,
-            occupiedTo: null,
-            ownerId: userDanaArb.id,
-            userId: null,
-            firstSelfReading: false,
-            checked: false
-        },
-        create: {
+    const book12 = await prisma.books.create({
+        data: {
             key: "book12",
             title: "Новая детская энциклопедия",
             author: null,
@@ -546,9 +329,9 @@ async function main() {
             typeId: typeEncic.id,
             pages: 320,
             age: [6, 10],
-            faceImg: "https://librarydom.ru/images/new-child-encic_face.jpg",
-            tocImg: ["https://librarydom.ru/images/new-child-encic_toc1.jpg", "https://librarydom.ru/images/new-child-encic_toc2.jpg", "https://librarydom/images/new-child-encic_toc3.jpg", "https://librarydom/images/new-child-encic_toc4.jpg"],
-            exampleImg: "https://librarydom.ru/images/new-child-encic_examp.jpg",
+            faceImg: "/images/new-child-encic_face.jpg",
+            tocImg: ["/images/new-child-encic_toc1.jpg", "/images/new-child-encic_toc2.jpg", "/images/new-child-encic_toc3.jpg", "/images/new-child-encic_toc4.jpg"],
+            exampleImg: "/images/new-child-encic_examp.jpg",
             statusFree: true,
             occupiedTo: null,
             ownerId: userDanaArb.id,
@@ -557,26 +340,8 @@ async function main() {
             checked: false
         }
     });
-    const book13 = await prisma.books.upsert({
-        where: { key: "book13" },
-        update: {
-            title: "Мои эмоции. 20 терапевтических сказок",
-            author: "Хонина И., Смирнова Е.",
-            seriesId: null,
-            typeId: typeLearn.id,
-            pages: 63,
-            age: [2, 7],
-            faceImg: "https://librarydom.ru/images/my-emotions-20-tales_face.jpg",
-            tocImg: ["https://librarydom.ru/images/my-emotions-20-tales_toc.jpg"],
-            exampleImg: "https://librarydom.ru/images/my-emotions-20-tales_examp.jpg",
-            statusFree: true,
-            occupiedTo: null,
-            ownerId: userDanaArb.id,
-            userId: null,
-            firstSelfReading: true,
-            checked: true
-        },
-        create: {
+    const book13 = await prisma.books.create({
+        data: {
             key: "book13",
             title: "Мои эмоции. 20 терапевтических сказок",
             author: "Хонина И., Смирнова Е.",
@@ -584,9 +349,9 @@ async function main() {
             typeId: typeLearn.id,
             pages: 63,
             age: [2, 7],
-            faceImg: "https://librarydom.ru/images/my-emotions-20-tales_face.jpg",
-            tocImg: ["https://librarydom.ru/images/my-emotions-20-tales_toc.jpg"],
-            exampleImg: "https://librarydom.ru/images/my-emotions-20-tales_examp.jpg",
+            faceImg: "/images/my-emotions-20-tales_face.jpg",
+            tocImg: ["/images/my-emotions-20-tales_toc.jpg"],
+            exampleImg: "/images/my-emotions-20-tales_examp.jpg",
             statusFree: true,
             occupiedTo: null,
             ownerId: userDanaArb.id,
@@ -595,26 +360,8 @@ async function main() {
             checked: true
         }
     });
-    const book14 = await prisma.books.upsert({
-        where: { key: "book14" },
-        update: {
-            title: "Детская энциклопедия динозавров",
-            author: null,
-            seriesId: null,
-            typeId: typeEncic.id,
-            pages: 100,
-            age: [4, 10],
-            faceImg: "https://librarydom.ru/images/child-encic-dinosaurs_face.jpg",
-            tocImg: ["https://librarydom.ru/images/child-encic-dinosaurs_toc.jpg"],
-            exampleImg: "https://librarydom.ru/images/child-encic-dinosaurs_examp.jpg",
-            statusFree: true,
-            occupiedTo: null,
-            ownerId: userDanaArb.id,
-            userId: null,
-            firstSelfReading: false,
-            checked: true
-        },
-        create: {
+    const book14 = await prisma.books.create({
+        data: {
             key: "book14",
             title: "Детская энциклопедия динозавров",
             author: null,
@@ -622,9 +369,9 @@ async function main() {
             typeId: typeEncic.id,
             pages: 100,
             age: [4, 10],
-            faceImg: "https://librarydom.ru/images/child-encic-dinosaurs_face.jpg",
-            tocImg: ["https://librarydom.ru/images/child-encic-dinosaurs_toc.jpg"],
-            exampleImg: "https://librarydom.ru/images/child-encic-dinosaurs_examp.jpg",
+            faceImg: "/images/child-encic-dinosaurs_face.jpg",
+            tocImg: ["/images/child-encic-dinosaurs_toc.jpg"],
+            exampleImg: "/images/child-encic-dinosaurs_examp.jpg",
             statusFree: true,
             occupiedTo: null,
             ownerId: userDanaArb.id,
@@ -633,26 +380,8 @@ async function main() {
             checked: true
         }
     });
-    const book15 = await prisma.books.upsert({
-        where: { key: "book15" },
-        update: {
-            title: "Вредные советы",
-            author: "Остер Г.",
-            seriesId: null,
-            typeId: null,
-            pages: 160,
-            age: [4, 10],
-            faceImg: "https://librarydom.ru/images/harm-advices-oster_face.jpg",
-            tocImg: [],
-            exampleImg: "https://librarydom.ru/images/harm-advices-oster_examp.jpg",
-            statusFree: true,
-            occupiedTo: null,
-            ownerId: userDanaArb.id,
-            userId: null,
-            firstSelfReading: false,
-            checked: true
-        },
-        create: {
+    const book15 = await prisma.books.create({
+        data: {
             key: "book15",
             title: "Вредные советы",
             author: "Остер Г.",
@@ -660,9 +389,9 @@ async function main() {
             typeId: null,
             pages: 160,
             age: [4, 10],
-            faceImg: "https://librarydom.ru/images/harm-advices-oster_face.jpg",
+            faceImg: "/images/harm-advices-oster_face.jpg",
             tocImg: [],
-            exampleImg: "https://librarydom.ru/images/harm-advices-oster_examp.jpg",
+            exampleImg: "/images/harm-advices-oster_examp.jpg",
             statusFree: true,
             occupiedTo: null,
             ownerId: userDanaArb.id,
@@ -671,26 +400,8 @@ async function main() {
             checked: true
         }
     });
-    const book16 = await prisma.books.upsert({
-        where: { key: "book16" },
-        update: {
-            title: "Мейзи Хитчинс. Тайна мальчика из джунглей",
-            author: "Вебб Х.",
-            seriesId: seriesMeyzi.id,
-            typeId: null,
-            pages: 124,
-            age: [7, 12],
-            faceImg: "https://librarydom.ru/images/meizi-secret-boy-from-jungles_face.jpg",
-            tocImg: [],
-            exampleImg: "https://librarydom.ru/images/meizi-secret-boy-from-jungles_examp.jpg",
-            statusFree: true,
-            occupiedTo: null,
-            ownerId: userDanaArb.id,
-            userId: null,
-            firstSelfReading: false,
-            checked: true
-        },
-        create: {
+    const book16 = await prisma.books.create({
+        data: {
             key: "book16",
             title: "Мейзи Хитчинс. Тайна мальчика из джунглей",
             author: "Вебб Х.",
@@ -698,9 +409,9 @@ async function main() {
             typeId: null,
             pages: 124,
             age: [7, 12],
-            faceImg: "https://librarydom.ru/images/meizi-secret-boy-from-jungles_face.jpg",
+            faceImg: "/images/meizi-secret-boy-from-jungles_face.jpg",
             tocImg: [],
-            exampleImg: "https://librarydom.ru/images/meizi-secret-boy-from-jungles_examp.jpg",
+            exampleImg: "/images/meizi-secret-boy-from-jungles_examp.jpg",
             statusFree: true,
             occupiedTo: null,
             ownerId: userDanaArb.id,
@@ -709,26 +420,8 @@ async function main() {
             checked: true
         }
     });
-    const book17 = await prisma.books.upsert({
-        where: { key: "book17" },
-        update: {
-            title: "Зоки и Бада",
-            author: "Тюхтяевы И. и Л.",
-            seriesId: null,
-            typeId: null,
-            pages: 144,
-            age: [4, 7],
-            faceImg: "https://librarydom.ru/images/zokies-and-bada_face.jpg",
-            tocImg: [],
-            exampleImg: "https://librarydom.ru/images/zokies-and-bada_toc.jpg",
-            statusFree: true,
-            occupiedTo: null,
-            ownerId: userDanaArb.id,
-            userId: null,
-            firstSelfReading: false,
-            checked: true
-        },
-        create: {
+    const book17 = await prisma.books.create({
+        data: {
             key: "book17",
             title: "Зоки и Бада",
             author: "Тюхтяевы И. и Л.",
@@ -736,9 +429,9 @@ async function main() {
             typeId: null,
             pages: 144,
             age: [4, 7],
-            faceImg: "https://librarydom.ru/images/zokies-and-bada_face.jpg",
+            faceImg: "/images/zokies-and-bada_face.jpg",
             tocImg: [],
-            exampleImg: "https://librarydom.ru/images/zokies-and-bada_toc.jpg",
+            exampleImg: "/images/zokies-and-bada_toc.jpg",
             statusFree: true,
             occupiedTo: null,
             ownerId: userDanaArb.id,
@@ -747,26 +440,8 @@ async function main() {
             checked: true
         }
     });
-    const book18 = await prisma.books.upsert({
-        where: { key: "book18" },
-        update: {
-            title: "Путешествие в королевство эльфов",
-            author: "Савченко Е.",
-            seriesId: null,
-            typeId: null,
-            pages: 143,
-            age: [4, 10],
-            faceImg: "https://librarydom.ru/images/trip-to-elfs-kingdom_face.jpg",
-            tocImg: [],
-            exampleImg: "https://librarydom.ru/images/trip-to-elfs-kingdom_examp.jpg",
-            statusFree: true,
-            occupiedTo: null,
-            ownerId: userDanaArb.id,
-            userId: null,
-            firstSelfReading: false,
-            checked: true
-        },
-        create: {
+    const book18 = await prisma.books.create({
+        data: {
             key: "book18",
             title: "Путешествие в королевство эльфов",
             author: "Савченко Е.",
@@ -774,9 +449,9 @@ async function main() {
             typeId: null,
             pages: 143,
             age: [4, 10],
-            faceImg: "https://librarydom.ru/images/trip-to-elfs-kingdom_face.jpg",
+            faceImg: "/images/trip-to-elfs-kingdom_face.jpg",
             tocImg: [],
-            exampleImg: "https://librarydom.ru/images/trip-to-elfs-kingdom_examp.jpg",
+            exampleImg: "/images/trip-to-elfs-kingdom_examp.jpg",
             statusFree: true,
             occupiedTo: null,
             ownerId: userDanaArb.id,
@@ -785,26 +460,8 @@ async function main() {
             checked: true
         }
     });
-    const book19 = await prisma.books.upsert({
-        where: { key: "book19" },
-        update: {
-            title: "Спящая красавица и другие сказки Шарля Перро",
-            author: "Перро Ш.",
-            seriesId: null,
-            typeId: null,
-            pages: 47,
-            age: [3, 8],
-            faceImg: "https://librarydom.ru/images/pero-sleep-beauty-cat-in-boots_face.jpg",
-            tocImg: ["https://librarydom.ru/images/pero-sleep-beauty-cat-in-boots_toc.jpg"],
-            exampleImg: "https://librarydom.ru/images/pero-sleep-beauty-cat-in-boots_examp.jpg",
-            statusFree: true,
-            occupiedTo: null,
-            ownerId: userDanaArb.id,
-            userId: null,
-            firstSelfReading: false,
-            checked: true
-        },
-        create: {
+    const book19 = await prisma.books.create({
+        data: {
             key: "book19",
             title: "Спящая красавица и другие сказки Шарля Перро",
             author: "Перро Ш.",
@@ -812,9 +469,9 @@ async function main() {
             typeId: null,
             pages: 47,
             age: [3, 8],
-            faceImg: "https://librarydom.ru/images/pero-sleep-beauty-cat-in-boots_face.jpg",
-            tocImg: ["https://librarydom.ru/images/pero-sleep-beauty-cat-in-boots_toc.jpg"],
-            exampleImg: "https://librarydom.ru/images/pero-sleep-beauty-cat-in-boots_examp.jpg",
+            faceImg: "/images/pero-sleep-beauty-cat-in-boots_face.jpg",
+            tocImg: ["/images/pero-sleep-beauty-cat-in-boots_toc.jpg"],
+            exampleImg: "/images/pero-sleep-beauty-cat-in-boots_examp.jpg",
             statusFree: true,
             occupiedTo: null,
             ownerId: userDanaArb.id,

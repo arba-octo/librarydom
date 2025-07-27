@@ -1,6 +1,7 @@
 import prisma from '#prisma/client';
+import { NextResponse } from "next/server";
 
-export default async function getBooksWithComments(req, res) {
+export async function GET() {
     const books = await prisma.books.findMany({
         include: {
             comments: {
@@ -10,5 +11,5 @@ export default async function getBooksWithComments(req, res) {
             },
         },
     });
-    res.json(books);
+    return NextResponse.json(books);
 }

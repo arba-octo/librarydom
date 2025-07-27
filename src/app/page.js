@@ -1,18 +1,15 @@
 import HomeClient from "@/components/HomeClient";
+import { getBooks } from "@/lib/getBooks";
 
 // Серверный компонент (SSR)
 export default async function Home() {
-    const host =
-        typeof window === "undefined" && process.env.API_URL
-            ? process.env.API_URL
-            : "";
+    const host = process.env.API_URL || "http://localhost:3000";
+    console.log('host = ', host);
     let books = []; // Заглушка
     try {
-        const res = await fetch(`${host}/api/v1/books-with-comments`, { cache: "no-store" });
-        if (!res.ok) { throw new Error('Failed to fetch') }
-        books = await res.json();
+        books = await getBooks();
     }
-    catch (error) { console.error('Fetch error:', error) }
-
+    catch (error) { console.error('Ошика в Fetch (catch) в компоненте Home:', error) }
+    console.log('books (загрузились с сервера в Home)  = ', books);
     return <HomeClient books={books} />;
 }
