@@ -11,6 +11,7 @@ const seriesSlice = createSlice({
         // Загружает все серии книг из БД в стейт, используется в SideBar
         setSeries: (state, action) => {
             state.series = action.payload;
+            console.log('Серии книг, которые загрузились из БД в seriesSlice: ', state.series);
         }
     }
 });

@@ -9,4 +9,7 @@
 }
 .book__preview {
     width: 139px;
+    height: 185px;
+    object-fit: cover;
+
 }

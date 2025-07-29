@@ -5,11 +5,12 @@
     column-gap: 20px;
     border-radius: 15px;
 }
+.book__mainImg-wrapper {
+
+}
 .book__mainImg {
     display: block;
-    width: auto;
-    max-width: 800px;
-    height: 600px;
+    object-fit: contain;
 }
 .book__descript-content {
     display: flex;
