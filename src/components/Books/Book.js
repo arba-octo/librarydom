@@ -38,7 +38,7 @@ function Book({book}) {
                      onClick={handleOpen}
                 >
                     { book.faceImg && <Image width={139} height={104} className={styles.book__preview} src={book.faceImg} alt="Книга"/> }
-                    <Box sx={{fontSize: '18px', color: '#020202', textAlign: 'center'}}>{book.title}</Box>
+                    <Box sx={{fontSize: '18px', color: '#020202', textAlign: 'center', py: '10px'}}>{book.title}</Box>
                     <Box sx={{fontSize: '16px', color: '#787878', textAlign: 'center'}}>{book.author}</Box>
                     <Box sx={{fontSize: '16px', color: '#787878', textAlign: 'center', mt: '5px'}}>{book.pages} стр.</Box>
                 </Box>

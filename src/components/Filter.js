@@ -1,6 +1,7 @@
 import styles from "@/components/Favourite.module.css";
 
 function Filter(props) {
+    console.log('фильтр, который приходит в props комп Filter: ', props);
     return (
         <div
             className={`clear ${styles["filter-panel__filter"]}`}

@@ -1,5 +1,4 @@
 'use client'
-
 import React, {useState} from "react";
 import Image from "next/image";
 import useEmblaCarousel from 'embla-carousel-react';
@@ -34,13 +33,15 @@ function BookCard({book}) {
     return (
         <div className={styles.book__card}>
            {/* Область для увеличенного изображения */}
-           <ImageZoom
-               src={selectedImg}
-               alt="Главная"
-               className={styles.book__mainImg}
-               width="auto"
-               height="600px"
-           />
+           <div className={styles['book__mainImg-wrapper']}>
+               <ImageZoom
+                   src={selectedImg}
+                   alt="Главная"
+                   className={styles.book__mainImg}
+                   width={800}
+                   height={600}
+               />
+           </div>
            <div className={styles["book__descript-content"]}>
                <div className={styles.book__text}>
                    <p className={styles.book__title}>{book.title}</p>
