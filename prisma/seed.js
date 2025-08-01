@@ -271,7 +271,7 @@ async function main() {
             age: [1, 7],
             faceImg: "/images/shmyak-to-doctor_face.jpg",
             tocImg: [],
-            exampleImg: "/images/shmyak-to-doctor_face.jpg",
+            exampleImg: "/images/shmyak-to-doctor_examp.jpg",
             statusFree: true,
             occupiedTo: null,
             ownerId: userDanaArb.id,
@@ -337,7 +337,7 @@ async function main() {
             ownerId: userDanaArb.id,
             userId: null,
             firstSelfReading: false,
-            checked: false
+            checked: true
         }
     });
     const book13 = await prisma.books.create({

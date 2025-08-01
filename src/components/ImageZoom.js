@@ -32,7 +32,11 @@ export default function ImageMagnifier({ src, alt, width, height }) {
 
     return (
         <div
-            style={{ display: "inline-block", position: "relative" }}
+            style={{
+                display: "inline-block",
+                position: "relative",
+
+            }}
         >
             <Image
                 src={src}
@@ -40,7 +44,7 @@ export default function ImageMagnifier({ src, alt, width, height }) {
                 ref={imgRef}
                 width={width}
                 height={height}
-                style={{ display: "block", maxWidth: "100%" }}
+                style={{ display: "block", objectFit: "contain" }}
                 onMouseEnter={() => setShow(true)}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={() => setShow(false)}

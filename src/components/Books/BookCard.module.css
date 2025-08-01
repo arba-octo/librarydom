@@ -1,12 +1,9 @@
 .book__card {
     width: 100%;
     display: grid;
-    grid-template-columns: 800px 1fr;
+    grid-template-columns: 700px 1fr;
     column-gap: 20px;
     border-radius: 15px;
-}
-.book__mainImg-wrapper {
-
 }
 .book__mainImg {
     display: block;
@@ -16,7 +13,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 387px;
+    width: max-content;
 }
 .book__text {
     display: flex;
@@ -36,8 +33,8 @@
     color: var(--color-grey);
     margin: 5px 0 0 0;
 }
-.book__text-descript {
-    border-spacing: 10px
+.book__table-descript {
+    border-spacing: 10px;
 }
 .table__first-column {
 
@@ -45,7 +42,14 @@
 .book__comments {
     border: none;
     cursor: pointer;
-    font-size: 14px;
+    font-size: inherit;
+}
+.book__first-self-reading {
+    padding-left: 10px;
+}
+.book__line-gallery {
+    display: flex;
+
 }
 .embla-gallery {
     width: 387px;
@@ -54,15 +58,16 @@
 .embla-gallery__container {
     display: flex;
     column-gap: 3px;
-    width: 387px;
-    align-items: flex-start;
-    object-fit: contain;
-}
-.embla-gallery__slide {
-    display: flex;
-    min-width: 0;
     width: 100%;
     height: auto;
+    max-height: 200px;
+    align-items: flex-start;
+    object-fit: contain;
     flex: 1 1 0;
+}
+.embla-gallery__slide {
+    min-width: 0;
+    width: auto;
+    height: fit-content;
     max-height: 200px;
 }

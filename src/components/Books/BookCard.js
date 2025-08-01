@@ -33,22 +33,22 @@ function BookCard({book}) {
     return (
         <div className={styles.book__card}>
            {/* Область для увеличенного изображения */}
-           <div className={styles['book__mainImg-wrapper']}>
+
                <ImageZoom
                    src={selectedImg}
                    alt="Главная"
                    className={styles.book__mainImg}
-                   width={800}
-                   height={600}
+                   width={700}
+                   height={525}
                />
-           </div>
+
            <div className={styles["book__descript-content"]}>
                <div className={styles.book__text}>
-                   <p className={styles.book__title}>{book.title}</p>
-                   { !book.author && <p className={styles.book_author}>{book.author}</p> }
-               <table className={styles["book__text-descript"]}>
+                  <p className={styles.book__title}>{book.title}</p>
+                  { !book.author && <p className={styles.book_author}>{book.author}</p> }
+                   <table className={styles["book__table-descript"]}>
                             <tbody>
-                            {!book.series &&
+                            {book.series &&
                                 <tr>
                                     <td className={styles["table__first-column"]}>Серия</td>
                                     <td>{book.series}</td>
@@ -75,47 +75,44 @@ function BookCard({book}) {
                                 </td>
                             </tr>
                             </tbody>
-                        </table>
-                       <p>Подходит для первого самостоятельного
-                            чтения: {book.firstSelfReading === true ? "ДА" : "НЕТ"}
-                       </p>
-                       <Box
-                            sx={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'center',
-                                '& > *': {
-                                    m: 0,
-                                },
-
-                            }}
-                       >
-                            <ButtonGroup variant="text" aria-label="Basic button group">
-                                <Button onClick={() => addFavourBook(book)}>Добавить в Избранное</Button>
-                                <Button>Взять книгу</Button>
-                            </ButtonGroup>
-                       </Box>
-                   </div>
+               </table>
+                   <p className={styles["book__first-self-reading"]}>Подходит для первого самостоятельного чтения: {book.firstSelfReading === true ? "ДА" : "НЕТ"}</p>
+                   <Box
+                      sx={{
+                           display: 'flex',
+                           flexDirection: 'column',
+                           alignItems: 'center',
+                           '& > *': {
+                                        mt: 2,
+                                    },
+                           }}
+                   >
+                       <ButtonGroup variant="text" aria-label="Basic button group">
+                       <Button onClick={() => addFavourBook(book)}>Добавить в Избранное</Button>
+                       <Button>Взять книгу</Button>
+                   </ButtonGroup>
+                   </Box>
+               </div> {/* закрыт book__text */}
+               <div className={styles["book__line-gallery"]}>
                    <hr className="line__section-separate"/>
 
                    {/* Галерея превью */}
                    <div className={styles["embla-gallery"]} ref={emblaRef}>
                        <div className={styles["embla-gallery__container"]}>
-                            {images.map((imgItem) => (
-                                    <Image
-                                        key={imgItem}
-                                        width={800}
-                                        height={600}
-                                        onClick={() => setSelectedImg(imgItem)}
-                                        src={imgItem} alt="Изображение"
-                                        className={styles["embla-gallery__slide"]}
-                                    />
-                            ))}
+                           {images.map((imgItem) => (
+                               <img
+                                   key={imgItem}
+                                   onClick={() => setSelectedImg(imgItem)}
+                                   src={imgItem}
+                                   alt="Изображение-превью из галереи"
+                                   className={styles["embla-gallery__slide"]}
+                               />
+                           ))}
                        </div>
                    </div>
-
                </div>
-           </div>
+           </div> {/* закрыт book__descript-content */}
+        </div>
     )
 }
 
