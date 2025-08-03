@@ -45,7 +45,7 @@ function BookCard({book}) {
            <div className={styles["book__descript-content"]}>
                <div className={styles.book__text}>
                   <p className={styles.book__title}>{book.title}</p>
-                  { !book.author && <p className={styles.book_author}>{book.author}</p> }
+                  { book.author && <p className={styles.book_author}>{book.author}</p> }
                    <table className={styles["book__table-descript"]}>
                             <tbody>
                             {book.series &&
@@ -62,20 +62,16 @@ function BookCard({book}) {
                                 <td>Возраст</td>
                                 <td>{book.age[0]} - {book.age[1]}</td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <button className={styles.book__comments} onClick={handleClickToView}>Отзывы
-                                        (
-                                        {book.comments ? book.comments.length : "0"}
-                                        )
-                                    </button>
-                                    {commentsView && book.comments.map((commentItem) =>
-                                        <div key={commentItem.key}>{commentItem.userId}: {commentItem.text}</div>
-                                    )}
-                                </td>
-                            </tr>
                             </tbody>
                </table>
+                   <button className={styles.book__comments} onClick={handleClickToView}>Отзывы
+                       (
+                       {book.comments ? book.comments.length : "0"}
+                       )
+                   </button>
+                   {commentsView && book.comments.map((commentItem) =>
+                       <div key={commentItem.key} className={styles["book__comments-text"]}>{commentItem.user.name}: {commentItem.text}</div>
+                   )}
                    <p className={styles["book__first-self-reading"]}>Подходит для первого самостоятельного чтения: {book.firstSelfReading === true ? "ДА" : "НЕТ"}</p>
                    <Box
                       sx={{
