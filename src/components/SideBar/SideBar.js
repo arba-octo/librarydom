@@ -15,7 +15,6 @@ function SideBar() {
         fetch("/api/v1/series")
             .then((res) => res.json())
             .then((data) => {
-                console.log('data (приходит в fetch из БД в SideBar (ожидаются все серии книг)): ', data);
                 dispatch(setSeries(data));
                 setLoading(false);
             })

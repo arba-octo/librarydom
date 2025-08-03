@@ -1,18 +1,17 @@
 'use client';
 
 import Header from "@/components/Header/Header";
-import {useDispatch, useSelector} from "react-redux";
-import {selectFavourites} from "@/features/favourites/favourites-slice";
+import {useDispatch} from "react-redux";
 import Favourite from "@/components/Favourite";
 import { Button } from "@mui/material";
 import ModalComponent from "@/components/Modals/ModalComponent";
 import ModalToTelegramAllBook from "@/components/Modals/ModalToTelegramAllBooks";
-import {openModal} from "@/features/modal-slice";
-import {useState} from "react";
+import {openModal} from "@/features/modal-slice";;
 import useLocalStorage from "@/features/useLocalStorage";
 
 function FavouritesPage() {
-    const [favourites, setFavourites] = useLocalStorage("favourites", []);
+    let favourites = localStorage.getItem("favourites");
+    favourites = favourites ? JSON.parse(favourites) : [];
     const dispatch = useDispatch();
     const dataBooks = favourites.reduce((acc, favourItem) => {
         return acc + `/n${favourItem.title} (${favourItem.author}); `;
