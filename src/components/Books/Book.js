@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import BookCard from "@/components/Books/BookCard";
 import styles from "@/components/Books/Book.module.css";
+import useLocalStorage from "@/features/useLocalStorage";
 
 // Стили для модального окна
 const muiStyle = {
@@ -22,6 +23,8 @@ function Book({book}) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    // Загружаем данные из localStorage, они опнадобаятся в BookCard, а внутри BookCard вызывать LS нельзя т.к. данные в LS будут обнуляться
+    const [favourites, setFavourites] = useLocalStorage("favourites", []);
 
     return (
         <div className={styles.book}>
@@ -51,6 +54,7 @@ function Book({book}) {
                     <BookCard
                         id={book.id}
                         book={book}
+                        setFavourites={setFavourites}
                     />
                 </Box>
             </Modal>

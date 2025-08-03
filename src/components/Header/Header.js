@@ -9,17 +9,14 @@ import {useValue} from "@/features/search/use-value";
 import {selectBooks} from "@/features/books-slice";
 import {selectFavourites} from "@/features/favourites/favourites-slice";
 import styles from "@/components/Header/Header.module.css";
+import useLocalStorage from "@/features/useLocalStorage";
 
 function Header({ books }) {
     // Глобальный state для строки поиска search в заголовке
     const [search, handleChangeSearch] = useValue(selectSearch, changeValueAction);
     // Локальный стейт для первичной загрузки Избранного из localStorage
-    const [favourites, setFavourites] = useState([]);
-    useEffect(() => {
-        // Чтение из localStorage только на клиенте
-        const favs = localStorage.getItem("favourites");
-        setFavourites(favs ? JSON.parse(favs) : []);
-    }, []);
+    const [favourites] = useLocalStorage("favourites", []);
+    console.log('favourites (пришло из useLocalStorage в Header) = ', favourites);
 
     return (
         <header className={`section ${styles.header}`}>

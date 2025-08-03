@@ -1,32 +1,33 @@
 'use client'
 import React, {useState} from "react";
-import Image from "next/image";
 import useEmblaCarousel from 'embla-carousel-react';
 import {Box, ButtonGroup, Button } from "@mui/material";
 import ImageZoom from "@/components/ImageZoom";
 import styles from "@/components/Books/BookCard.module.css";
 
-function addFavourBook(book) {
-    // Читаем favourites из localStorage, если нет — используем пустой массив
-    let favourites = localStorage.getItem("favourites");
-    favourites = favourites ? JSON.parse(favourites) : [];
-    favourites.push(book); // Добавляем новую книгу
-    localStorage.setItem("favourites", JSON.stringify(favourites));
-};
+function BookCard({book, setFavourites}) {
+    // Настраиваем работу localStorage
+    function addFavourBook(book) {
+        setFavourites(prev => {
+            // Создаем newFav - обновленный массив с добавленной в Избранное книгой (так как favourites сразу не обносится)
+            const newFav = prev.some(favItem => favItem.id === book.id) ? prev : [...prev, book];
+            return newFav;
+        });
+    }
 
-function BookCard({book}) {
-    console.log('book (приходит в props в BookCard) = ', book);
     // Для галереи, выполненной на Embla Crausel
     const [emblaRef] = useEmblaCarousel();
-    // Вытаскиваем из book только картинки - создаем масив с массивом картинок из БД
+    // Вытаскиваем из book только картинки - создаем массив с массивом картинок из БД
     const images = [
         ...(book.faceImg ? [book.faceImg] : []),
         ...(Array.isArray(book.tocImg) ? book.tocImg.flat(Infinity) : book.tocImg ? [book.tocImg] : []),
         ...(Array.isArray(book.exampleImg) ? book.exampleImg.flat(Infinity) : book.exampleImg ? [book.exampleImg] : []),
     ];
+
     // Локальный стейт и отслеживатель для отображения комментариев:
     const [commentsView, setCommentsView] = useState(false);
     const handleClickToView = () => { setCommentsView(!commentsView); }
+
     // Локальный стект для отображения главной картинки:
     const [selectedImg, setSelectedImg] = useState(images[0]);
 
