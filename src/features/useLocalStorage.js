@@ -4,12 +4,31 @@
 import { useEffect, useState } from "react";
 
 function useLocalStorage(key, initialValue) {
-    const [value, setValue] = useState(initialValue);
+    const [value, setValue] = useState(() => {
+        if (typeof window === "undefined") return initialValue;
+        const json = localStorage.getItem(key);
+        if (json && json !== "undefined") {
+            try {
+                return JSON.parse(json);
+            } catch {
+                return initialValue;
+            }
+        }
+        return initialValue;
+    });
 
     // Загружаем значение из localStorage при монтировании
     useEffect(() => {
         const json = localStorage.getItem(key);
-        if (json) setValue(JSON.parse(json));
+        if (json && json !== "undefined") {
+            try {
+                setValue(JSON.parse(json));
+            } catch (e) {
+                setValue(initialValue);
+            }
+        } else {
+            setValue(initialValue);
+        }
     }, [key]);
 
     // Сохраняем значение и отправляем кастомное событие при изменении value

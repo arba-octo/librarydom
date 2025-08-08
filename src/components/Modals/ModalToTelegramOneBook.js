@@ -3,6 +3,7 @@ import CopyComponent from "@/components/CopyComponent";
 import Link from "next/link";
 
 function ModalToTelegramOneBook ({ dataBook }) {
+    console.log("Зашли в ModalToTelegramOneBook dataBook = ", dataBook);
     return (
         <>
             <Typography id="modal-modal-title" variant="h6" component="h2">
