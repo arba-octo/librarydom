@@ -1,8 +1,9 @@
-import { useDispatch, useSelector } from "react-redux";
 import { Box, Modal } from "@mui/material";
-import { closeModal, selectModal } from "@/features/modal-slice";
+import {useDispatch, useSelector} from "react-redux";
+import {closeModal, selectModal} from "@/features/modal-slice";
 
 function ModalComponent({ width, children }) {
+    const dispatch = useDispatch();
     const style = {
         position: 'absolute',
         top: '50%',
@@ -15,13 +16,12 @@ function ModalComponent({ width, children }) {
         p: 4,
         borderRadius: 4,
     };
-    const dispatch = useDispatch();
-    const modalOpen = useSelector(selectModal);
-    const handleCloseModal = () => { dispatch(closeModal()); }
+    const modal = useSelector(selectModal);
+    const handleCloseModal = () => { dispatch(closeModal()); };
 
     return (
         <Modal
-            open={modalOpen}
+            open={modal}
             onClose={handleCloseModal}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"

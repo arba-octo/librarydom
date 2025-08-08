@@ -3,9 +3,7 @@
     display: flex;
     column-gap: 10px;
 }
-.favourite__book-img {
-    width: 60px;
-}
-.favourite__descript_item {
-    display: block;
+.favourite__descript {
+    display: flex;
+    flex-direction: column;
 }

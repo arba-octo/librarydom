@@ -9,7 +9,7 @@ const modalSlice = createSlice({
     initialState,
     reducers: {
         // Открывает модельное окно
-        openModal: (state) => { state.modal = true; },
+        openModal: (state) => { console.log("зашли в openModal в слайсе"); state.modal = true; },
         closeModal: (state) => { state.modal = false; }
     }
 });
